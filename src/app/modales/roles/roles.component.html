@@ -1,0 +1,37 @@
+<div class="modal animated fadeInLeft  " style="display: block;" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- //=================================================================================================
+                FORMULARIO USUARIO NUEVO
+            ======================================================================================================-->
+            <div class="modal-header">
+                <div class="col-md-11">
+                    <h5>CAMBIAR ROLE DE USUARIO</h5>
+                </div>
+                <button class="btn" (click)="closeModal($event)"><i class="mdi mdi-close"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <form class="form-material m-t-40 row" [formGroup]="formRole" (ngSubmit)="cambiarRole()">
+                            <div class="form-group col-md-12 m-t-20">
+                                <select class="form-control" 
+                                        formControlName="role"
+                                        name="role">
+                                    <option value="USER_DETONANTE">DETONANTE</option>
+                                    <option value="USER_RESPUESTA">RESPUESTA</option>
+                                    <option value="USER_VALIDACION">VALIDACION</option>
+                                    <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                                </select>
+                                <p style="color: red" *ngIf="campoNoValido('role')"><small>*Este campo es obligatorio</small></p>
+                            </div>
+                            <div class="form-group text-center col-md-12 m-t-20">
+                                <button class="btn btn-success btn-lg btn-block text-uppercase btn-rounded"
+                                        type="submit">CAMBIAR</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+

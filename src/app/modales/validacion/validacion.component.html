@@ -1,0 +1,73 @@
+<div class="modal animated fadeInLeft  " style="display: block;" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- //=================================================================================================
+                FORMULARIO USUARIO NUEVO
+            ======================================================================================================-->
+            <div class="modal-header">
+                <div class="col-md-11">
+                    <h5>VALIDACION</h5>
+                </div>
+                <button class="btn" (click)="closeModal($event)"><i class="mdi mdi-close"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <form class="form-material m-t-40 row" 
+                                autocomplete="off" 
+                                 [formGroup]="formValidacion"
+                                 (ngSubmit)="validarDoc()"
+                                id="ValidacionDoc">
+                                <div class="form-group col-md-4 m-t-20">
+                                    <input type="text" 
+                                            class="form-control form-control-line" 
+                                            placeholder="depto"
+                                            formControlName="depto"
+                                            >
+                                            <p style="color: red" *ngIf="campoNoValido('depto')"><small>*Este campo es obligatorio</small></p>
+                                    
+                                </div>
+                                <div class="form-group col-md-4 m-t-20">
+                                    <input type="text" 
+                                            class="form-control form-control-line" 
+                                            placeholder="supervisor"
+                                            formControlName="supervisor"
+                                            >
+                                            <p style="color: red" *ngIf="campoNoValido('supervisor')"><small>*Este campo es obligatorio</small></p>
+
+                                </div>
+                                <div class="form-group col-md-4 m-t-20">
+                                    <input type="text" 
+                                            class="form-control form-control-line" 
+                                            placeholder="administrador"
+                                            formControlName="administrador">
+                                            <p style="color: red" *ngIf="campoNoValido('administrador')"><small>*Este campo es obligatorio</small></p>
+
+                                </div>
+                            <div class="form-group col-md-12 m-t-20">
+                                <select class="form-control" 
+                                        formControlName="estatus"
+                                        name="estatus">
+                                    <option value="PENDIENTE">PENDIENTE</option>
+                                    <option value="FINALIZADO">FINALIZADO</option>
+                                    <option value="EN REVISION">EN REVISION</option>
+                                    <option value="EN TRAMITE">EN TRAMITE</option>
+                                </select>
+                                <p style="color: red" *ngIf="campoNoValido('estatus')"><small>*Este campo es obligatorio</small></p>
+
+                               
+                            </div>
+                            
+                            <div class="form-group text-center col-md-6 m-t-20">
+                                <button class="btn btn-success btn-lg btn-block text-uppercase btn-rounded"
+                                        type="submit">GUARDAR</button>
+                            </div>
+                            <div class="form-group text-center col-md-6 m-t-20">
+                                <button class="btn btn-danger btn-lg btn-block text-uppercase btn-rounded" 
+                                        
+                                        (click)="limpiarForm()">CANCELAR</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>

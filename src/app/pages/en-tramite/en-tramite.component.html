@@ -1,0 +1,95 @@
+
+                  <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1>En Tramite</h1>
+                                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row animated fadeIn">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Trazabilidad</h4>
+                                <h6 class="card-subtitle">Vista previa de la trazabilidad de los docuemtos registrados</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead >
+                                            <tr>
+                                                <th class="text-center detonante"  colspan="7"> DETONANTE</th>
+                                                <th class="text-center resultado"  colspan="3">RESULTADO</th>
+                                                <th class="text-center statusDoc" rowspan="2">ACCIONES</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="detonante">Fecha</th>
+                                                <th class="detonante">Expediente</th>
+                                                <th class="detonante">Asunto</th>
+                                                <th class="detonante">GESSM</th>
+                                                <th class="detonante">SSM</th>
+                                                <th class="detonante">SSS</th>
+                                                <th class="detonante">Área Resp.</th>
+                                                <th class="resultado">Respuesta</th>
+                                                <th class="resultado">Número</th>
+                                                <th class="resultado">Estatus</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="sobreDoc" *ngFor="let doc of docs">
+                                                
+                                                <td>{{doc.fecha }}</td>
+                                                <td>{{ doc.expediente}}</td>
+                                                <td>{{ doc.asunto}}</td>
+                                                <td>{{doc.numeroGESSM}}</td>
+                                                <td>{{ doc.numeroSSM}}</td>
+                                                <td>{{doc.numeroSSS}}</td>
+                                                <td>{{ doc.areaResponsable }}</td>
+                                                <td>{{ doc.respuesta}}</td>
+                                                <td>{{doc.numeroResultado}}</td>
+                                                <td *ngIf="doc.estatus === 'EN TRAMITE'" style="background-color: #e7d800;color: #000">{{doc.estatus}}</td>
+                                                                                              
+                                                 <!-- subir PDF y visualizar pdf para user_detonante-->
+                                                 <td *ngIf="role == 'USER_DETONANTE'">
+                                                    <a href="http://localhost:4000/api/upload/{{ doc.dirDoc }}" data-toggle="tooltip" data-original-title="Archivo" target="_blank"> <i class="iconos fa fa-file-pdf-o"></i> </a>&nbsp;
+                                                    <a *ngIf="doc.dirDoc == 'SIN_DOCUMENTO.pdf'" data-toggle="tooltip"  data-original-title="Subir archivo" (click)="subirArchivo(doc._id)" > <i class="iconos fa fa-upload"></i> </a>            
+                                                </td>
+
+                                                <!-- editar resporte y visualizar PDF user_respuesta-->
+                                                <td *ngIf="role == 'USER_RESPUESTA'">
+                                                    <a *ngIf="doc.estatus != 'FINALIZADO'"   data-toggle="tooltip" data-original-title="Edit" (click)="respuestaDoc(doc._id)"> <i class="iconos fa fa-pencil  m-r-10 "></i> </a>
+                                                    <a href="http://localhost:4000/api/upload/{{ doc.dirDoc }}" data-toggle="tooltip" data-original-title="Archivo" target="_blank"> <i class="iconos fa fa-file-pdf-o"></i> </a>&nbsp;
+                                                    <a *ngIf="doc.docDir != 'SIN_DOCUMENTO.pdf' && doc.estatus != 'FINALIZADO'" data-toggle="tooltip"  data-original-title="Subir archivo" (click)="subirArchivo(doc._id)" > <i class="iconos fa fa-upload"></i> </a>            
+
+                                                </td>
+
+
+                                                <!-- editar validación  y visualizar PDF user_validacion-->
+                                                <td *ngIf="role == 'USER_VALIDACION'">
+                                                    <a *ngIf="doc.estatus != 'FINALIZADO'"   data-toggle="tooltip" data-original-title="Edit" (click)="validacionDoc(doc._id)"> <i class="iconos fa fa-pencil  m-r-10 "></i> </a>
+                                                    <a href="http://localhost:4000/api/upload/{{ doc.dirDoc }}" data-toggle="tooltip" data-original-title="Archivo" target="_blank"> <i class="iconos fa fa-file-pdf-o"></i> </a>&nbsp;
+                                                </td>
+
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+                    
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->

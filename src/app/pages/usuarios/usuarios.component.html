@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h1>Usuarios Registrados</h1>
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row animated fadeIn">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row el-element-overlay">
+                                    <div class="col-lg-2 col-md-3 text-center" *ngFor="let users of usuario">
+                                        <div class="card ">
+                                            <div class="el-card-item">
+                                                <div class="el-card-avatar el-overlay-1"> <img
+                                                        src="../assets/images/users/1.png" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="el-info">
+                                                            <li><a *ngIf="users.status == 'ACTIVO'"
+                                                                    class="btn default btn-outline image-popup-vertical-fit"
+                                                                    style="background-color:red"
+                                                                    (click)="estatusUser(users.uid,'DESACTIVADO')"><i
+                                                                        class=" iconos fa fa-lock"></i></a></li>
+                                                            <li><a *ngIf="users.status == 'DESACTIVADO'"
+                                                                    class="btn default btn-outline image-popup-vertical-fit"
+                                                                    style="background-color:green"
+                                                                    (click)="estatusUser(users.uid,'ACTIVO')"><i
+                                                                        class=" iconos fa fa-unlock"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <div class="col-md-12">
+                                                        <table >
+                                                            <tr>
+                                                                <td>
+                                                                    <h3 *ngIf="users.status == 'ACTIVO'" style="color:green"
+                                                                        class="box-title">{{ users.status}}</h3>
+                                                                    <h3 *ngIf="users.status == 'DESACTIVADO'"
+                                                                        style="color:red" class="box-title">{{users.status}}</h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><small>{{ users.nombre}}</small></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><small>{{ users.control}}</small></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <a class="cursor" (click)="cambiarRole(users.uid)">{{ users.role}}</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->

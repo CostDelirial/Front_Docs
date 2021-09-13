@@ -1,0 +1,134 @@
+<div class="modal animated fadeInLeft  " style="display: block;" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            
+            <!-- //=================================================================================================
+                FORMULARIO USUARIO NUEVO
+            ======================================================================================================-->
+            <div class="modal-header">
+                <div class="col-md-11">
+                    <h5>NUEVO DOCUMENTO</h5>
+                </div>
+                <button class="btn" (click)="closeModal($event)"><i class="mdi mdi-close"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <form class="form-material m-t-40 row"
+                        autocomplete="off"
+                        [formGroup]="ArcNewForm"
+                        (submit)='registarFormulario()'
+                        id="ArchivoNuevo"
+                        >
+                            <!-- Detonante-->
+                            <div class="form-group col-md-3 m-t-20">
+                                <input type="date"
+                                        class="form-control form-control-line"
+                                        formControlName="fecha" > 
+                                        <p style="color: red" *ngIf="campoNoValido('fecha')"><small>*La fecha de documento es obligatoria</small></p>
+                            </div>
+                            <div class="form-group col-md-4 m-t-20">
+                                <input type="text"
+                                        class="form-control form-control-line"
+                                         placeholder="EXPEDIENTE"
+                                         formControlName="expediente"> 
+                                         <p style="color: red" *ngIf="campoNoValido('expediente')">*El expediente es obligatorio</p>
+                            </div>
+                            <div class="form-group col-md-5 m-t-20">
+                                <select class="form-control"
+                                        formControlName="documento">
+                                    <option>OFICIO INTERNO RESERVADO</option>
+                                    <option>OFICIO EXTERNO RESERVADO</option>
+                                    <option>OFICIO INTERNO</option>
+                                    <option>TARJETA INFORMATIVA</option>
+                                    <option>NOTA INFORMATIVA</option>
+                                    <option>CORREO ELECTRONICO</option>
+                                    <option>INSTRUCCIÓN VERVAL</option>
+                                </select>
+                                <p style="color: red" *ngIf="campoNoValido('documento')"><small>*El tipo de documento es obligatorio</small></p>
+                            </div>
+                            <div class="form-group col-md-6 m-t-20">
+                                <input type="email"
+                                        id="example-email2"
+                                        name="example-email"
+                                        class="form-control"
+                                        placeholder="NÚMERO"
+                                        formControlName="folioSSE">
+                                        <p style="color: red" *ngIf="campoNoValido('folioSSE')"><small>*El número de folio es obligatorio</small></p>
+                            </div>
+                            <div class="form-group col-md-6 m-t-20">
+                                <input type="text"
+                                        class="form-control form-control-line" 
+                                        placeholder="ASUNTO"
+                                        formControlName="asunto"> 
+                                        <p style="color: red" *ngIf="campoNoValido('asunto')"><small>*El asunto es obligatorio</small></p>
+                            </div>
+                            <!-- Numeor de acuerdo-->
+                            <div class="form-group col-md-4 m-t-20">
+                                <input type="text" 
+                                        class="form-control form-control-line" 
+                                        placeholder="GESSM"
+                                        formControlName="numeroGESSM"> 
+                                        <p style="color: red" *ngIf="campoNoValido('numeroGESSM')"><small>*El número GESSM es obligatorio</small></p>
+                            </div>
+                            <div class="form-group col-md-4 m-t-20">
+                                <input type="text" 
+                                        class="form-control form-control-line" 
+                                        placeholder="SSM"
+                                        formControlName="numeroSSM"> 
+                                        <p style="color: red" *ngIf="campoNoValido('numeroSSM')"><small>*El número SSM es obligatorio</small></p>
+                            </div>
+                            <div class="form-group col-md-4 m-t-20">
+                                <input type="text" 
+                                        class="form-control form-control-line" 
+                                        placeholder="SSS"
+                                        formControlName="numeroSSS"> 
+                                        <p style="color: red" *ngIf="campoNoValido('numeroSSS')"><small>*El numeor SSS es obligatorio</small></p>
+                            </div>
+                          
+                            <!-- Seguimineto -->
+                            <div class="form-group col-md-7 m-t-20">
+                                <select class="form-control"
+                                        formControlName="atencionAcuerdo">
+                                    <option>TRAMITE</option>
+                                    <option>SEGUIMINETO</option>
+                                    <option>ESTUDIO Y OPINION</option>
+                                    <option>CONFORME A PROCEDIMIENTO</option>
+                                    <option>INFORMAR</option>
+                                    <option>COMO LO SOLICITA</option>
+                                </select>
+                                <p style="color: red" *ngIf="campoNoValido('atencionAcuerdo')"><small>*La atencion de acuerdo es obligatoria</small></p>
+                            </div>
+                            <div class="form-group col-md-5 m-t-20">
+                                <select class="form-control"
+                                        formControlName="areaResponsable">
+                                    <option>DVANT 5257</option>
+                                    <option>DVANT 5567</option>
+                                    <option>DMAT 5777</option>
+                                    <option>DMAT 5768</option>
+                                    <option>CCTV-CA 5772</option>
+                                    <option>SSS 4695</option>
+                                    <option>OTRO</option>
+                                </select>
+                                <p style="color: red" *ngIf="campoNoValido('areaResponsable')"><small>*El áre del documento es obligatoria</small></p>
+                            </div>
+                            
+                            
+                            <div class="form-group text-center col-md-6 m-t-20">
+                                    <button  class="btn btn-success btn-lg btn-block text-uppercase btn-rounded" type="submit">GUARDAR</button>
+                            </div>
+                            <div class="form-group text-center col-md-6 m-t-20">
+                                <button class="btn btn-danger btn-lg btn-block text-uppercase btn-rounded"  (click)="limpiarForm()">CANCELAR</button>
+                            </div>
+                            
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            
+            

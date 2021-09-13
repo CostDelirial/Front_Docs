@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "Docs"
+  "defaultProject": "Docs",
+  "cli": {
+    "analytics": false
+  }
 }
